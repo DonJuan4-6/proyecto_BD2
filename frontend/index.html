@@ -3,80 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Tienda - Gestión de Productos</title>
+    <meta name="theme-color" content="#f1f5f9">
+    <meta name="description" content="Bienvenido a Mi Tienda: descubre nuestros productos y conoce una forma sencilla de administrar tu inventario.">
+    <title>Mi Tienda | Productos para cada día</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Nav Bar -->
-    <header class = "navbar">
+    <header class="navbar">
         <div class="contenedor nav-contenido">
-            <a href="index.html" class ="logo">Mi<strong>Tienda</strong></a>
-            <nav class = "nav-links">
-                <a href="index.html">Inicio</a>
+            <a href="index.html" class="logo" aria-label="Mi Tienda, inicio">Mi<strong>Tienda</strong></a>
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="#inicio" aria-current="page">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
                 <a href="#productos">Productos</a>
+                <a href="#administracion">Administración</a>
                 <a href="contacto.html">Contacto</a>
             </nav>
         </div>
     </header>
 
-
-    <main class="contenedor">
-        <div class="encabezado-principal">
-            <h1>Sistema de Gestión de Productos</h1>
-            <p>Panel conectado a Node.js, Express y MySQL</p>
-        </div>
-
-        <div class="panel-tienda">
-            <section class="tarjeta">
-                <h2 id="tituloFormulario">Registrar producto</h2>
-
-                <!--FORMULARIO AGREGAR PRODUCTO-->
-                <form id= "formularioProducto" action="">
-                    <input type="hidden" id="productoId" value=""/>
-
-                    <div class="campo">
-                        <label for="nombre">Nombre del producto:</label>
-                        <input 
-                            type="text" 
-                            id="nombre" 
-                            placeholder="Ej: Camiseta" 
-                            required
-                        />
+    <main>
+        <section class="portada" id="inicio">
+            <div class="contenedor portada-contenido">
+                <div class="portada-texto">
+                    <span class="etiqueta-portada"><span class="punto-etiqueta"></span> Lo que necesitas, más cerca</span>
+                    <h1>Encuentra tus favoritos.<br><span>Disfruta cada día.</span></h1>
+                    <p>En Mi Tienda hacemos fácil descubrir buenos productos y tener todo lo que te gusta siempre a la mano.</p>
+                    <div class="portada-acciones">
+                        <a class="btn btn-portada" href="#productos">Explorar productos <span aria-hidden="true">→</span></a>
+                        <a class="enlace-secundario" href="#nosotros">Conoce nuestra tienda</a>
                     </div>
-
-                    <div class="campo">
-                        <label for="precio">precio:</label>
-                        <input type="number" id="precio" step="0.1" placeholder="Ej: 250000" required/>
+                    <div class="portada-confianza">
+                        <span class="icono-confianza" aria-hidden="true">✓</span>
+                        <span>Una experiencia simple, cercana y confiable</span>
                     </div>
-                    
-                    <div class="campo">
-                        <label for="stock">Stock (cantidad)</label>
-                        <input type="number" id="stock" step="1" placeholder="Ej: 10" required/>
+                </div>
+                <div class="portada-visual" aria-label="Selección de productos destacados">
+                    <div class="visual-brillo"></div>
+                    <div class="visual-nota"><span>✦</span> Tu próxima buena elección</div>
+                    <div class="visual-producto visual-producto-principal">
+                        <span class="producto-icono" aria-hidden="true">✿</span>
+                        <span class="producto-categoria">HECHO PARA TI</span>
+                        <strong>Pequeños detalles,<br>grandes momentos.</strong>
+                        <span class="producto-enlace">Descubre algo nuevo <span aria-hidden="true">↗</span></span>
                     </div>
-
-                    <div class ="acciones-form">
-                        <button type="submit" id="btnGuardar" class="btn btn-guardar">Guardar Producto</button>
-                        <button type="button" id="btnCancelar" class="btn btn-cancelar">Cancelar</button>
+                    <div class="visual-producto visual-producto-secundario">
+                        <span class="producto-icono producto-icono-secundario" aria-hidden="true">✧</span>
+                        <div><strong>Tu tienda de confianza</strong><span>Siempre cerca de ti</span></div>
                     </div>
-                </form>
+                    <div class="visual-sello" aria-hidden="true"><span>MI</span><strong>TIENDA</strong></div>
+                </div>
+            </div>
+            <div class="portada-curva" aria-hidden="true"></div>
+        </section>
 
-            </section>
+        <section class="seccion-nosotros" id="nosotros">
+            <div class="contenedor nosotros-contenido">
+                <div class="nosotros-intro">
+                    <span class="sobrelinea">UN GUSTO TENERTE AQUÍ</span>
+                    <h2>Una tienda pensada<br>para <span>hacerte la vida fácil.</span></h2>
+                </div>
+                <div class="nosotros-detalle">
+                    <p>Creemos que encontrar lo que buscas debería ser sencillo. Por eso reunimos nuestros productos en un espacio claro, cercano y fácil de explorar.</p>
+                    <div class="beneficios">
+                        <div class="beneficio"><span aria-hidden="true">♡</span><div><strong>Atención cercana</strong><small>Estamos aquí para ayudarte.</small></div></div>
+                        <div class="beneficio"><span aria-hidden="true">✦</span><div><strong>Todo organizado</strong><small>Encuentra lo que necesitas fácilmente.</small></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="seccion-productos" id="productos">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <div><span class="sobrelinea">NUESTRO CATÁLOGO</span><h2>Un vistazo a la tienda</h2></div>
+                    <p>Conoce los productos disponibles y encuentra tu próximo favorito.</p>
+                </div>
+                <section class="tarjeta tarjeta-catalogo" aria-labelledby="tituloCatalogo">
+                    <h2 class="sr-only" id="tituloCatalogo">Productos disponibles</h2>
+                    <div id="listaCatalogo" class="lista-productos lista-catalogo">
+                        <!-- Los productos se cargan desde app.js -->
+                    </div>
+                </section>
+                <div class="catalogo-pie">
+                    <span>¿Buscas algo en particular?</span>
+                    <a href="contacto.html">Conversemos <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
+        </section>
 
-            <!-- SECCION DE LISTA DE PRODUCTOS-->
-            <section class="tarjeta" id="productos">
-                <h2>Lista de Productos</h2>
+        <section class="seccion-administracion" id="administracion">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <div><span class="sobrelinea">PANEL DE CONTROL</span><h2>Administración de productos</h2></div>
+                    <p>Gestiona fácilmente el inventario de Mi Tienda.</p>
+                </div>
+                <div class="panel-tienda">
+                    <section class="tarjeta">
+                        <h2 id="tituloFormulario">Registrar producto</h2>
+
+                        <form id="formularioProducto" action="">
+                            <input type="hidden" id="productoId" value=""/>
+
+                            <div class="campo">
+                                <label for="nombre">Nombre del producto:</label>
+                                <input type="text" id="nombre" placeholder="Ej: Camiseta" required/>
+                            </div>
+
+                            <div class="campo">
+                                <label for="precio">Precio:</label>
+                                <input type="number" id="precio" step="0.1" min="0" placeholder="Ej: 250000" required/>
+                            </div>
+
+                            <div class="campo">
+                                <label for="stock">Stock (cantidad)</label>
+                                <input type="number" id="stock" step="1" min="0" placeholder="Ej: 10" required/>
+                            </div>
+
+                            <div class="acciones-form">
+                                <button type="submit" id="btnGuardar" class="btn btn-guardar">Guardar Producto</button>
+                                <button type="button" id="btnCancelar" class="btn btn-cancelar">Cancelar</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="tarjeta tarjeta-gestion">
+                        <h2>Lista para gestionar</h2>
+                        <p class="texto-gestion">Edita o elimina los productos registrados en tu inventario.</p>
                     <div id="listaProductos" class="lista-productos">
-                        <!--LOS PRODUCTOS SE CARGAN DESDE APP.JS-->
                     </div>
-            </section>
-
-        </div>
-          
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
     <footer class="footer">
         <div class="contenedor footer-contenido">
-            <p>&copy; 2024 Mi Tienda. Todos los derechos reservados.</p>
+            <a href="#inicio" class="logo logo-footer">Mi<strong>Tienda</strong></a>
+            <p>&copy; 2026 Mi Tienda. Un espacio creado para ti.</p>
+            <a class="footer-contacto" href="contacto.html">Hablemos <span aria-hidden="true">→</span></a>
         </div>
     </footer>
     <script src="app.js"></script>

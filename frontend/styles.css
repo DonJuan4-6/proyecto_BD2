@@ -1,7 +1,3 @@
-ESTILOS CSS
-
-
-
 /* =========================================================
    estilos.css — Estilos para Mi Tienda
    ========================================================= */
@@ -369,5 +365,611 @@ textarea:focus {
 
     .nav-links {
         display: none;
+    }
+}
+
+/* --- Portada de bienvenida --- */
+main {
+    padding: 0;
+}
+
+.portada {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(118deg, #eff6ff 0%, #f8fafc 53%, #e0eaff 100%);
+}
+
+.portada-contenido {
+    min-height: 570px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 48px;
+    padding-top: 64px;
+    padding-bottom: 82px;
+}
+
+.portada-texto {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+}
+
+.etiqueta-portada,
+.sobrelinea {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #2563eb;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.etiqueta-portada {
+    padding: 9px 13px;
+    border: 1px solid #dbeafe;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.01em;
+    text-transform: none;
+}
+
+.punto-etiqueta {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 4px #dcfce7;
+}
+
+.portada-texto h1 {
+    margin: 24px 0 16px;
+    color: #0f172a;
+    font-size: clamp(2.5rem, 5vw, 4.15rem);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+}
+
+.portada-texto h1 span,
+.nosotros-intro h2 span {
+    color: #2563eb;
+}
+
+.portada-texto > p {
+    max-width: 470px;
+    color: #64748b;
+    font-size: 1.07rem;
+}
+
+.portada-acciones {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 28px;
+}
+
+.btn-portada {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 20px;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+}
+
+.btn-portada:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn-portada span,
+.catalogo-pie a span,
+.footer-contacto span {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.enlace-secundario,
+.catalogo-pie a,
+.footer-contacto {
+    color: #1e293b;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.enlace-secundario:hover,
+.catalogo-pie a:hover,
+.footer-contacto:hover {
+    color: #2563eb;
+}
+
+.portada-confianza {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 34px;
+    color: #64748b;
+    font-size: 0.83rem;
+}
+
+.icono-confianza {
+    display: grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.portada-visual {
+    position: relative;
+    display: grid;
+    min-height: 400px;
+    place-items: center;
+    isolation: isolate;
+}
+
+.visual-brillo {
+    position: absolute;
+    z-index: -1;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(191, 219, 254, 0.9), rgba(219, 234, 254, 0.1) 70%);
+}
+
+.visual-producto {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 24px 60px rgba(30, 64, 175, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.visual-producto-principal {
+    width: min(330px, 82%);
+    min-height: 310px;
+    justify-content: flex-end;
+    padding: 28px;
+    transform: rotate(-4deg);
+}
+
+.producto-icono {
+    position: absolute;
+    top: 24px;
+    left: 25px;
+    display: grid;
+    width: 112px;
+    height: 112px;
+    place-items: center;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #dbeafe, #bfdbfe);
+    color: #2563eb;
+    font-size: 4.5rem;
+}
+
+.producto-categoria {
+    margin-bottom: 8px;
+    color: #2563eb;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.visual-producto-principal > strong {
+    color: #0f172a;
+    font-size: 1.4rem;
+    line-height: 1.25;
+}
+
+.producto-enlace {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: #64748b;
+    font-size: 0.78rem;
+}
+
+.producto-enlace span {
+    color: #2563eb;
+    font-size: 1rem;
+}
+
+.visual-nota {
+    position: absolute;
+    top: 22px;
+    right: 2%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+    color: #334155;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transform: rotate(4deg);
+}
+
+.visual-nota span {
+    margin-right: 5px;
+    color: #f59e0b;
+}
+
+.visual-producto-secundario {
+    right: 0;
+    bottom: 34px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 17px;
+    transform: rotate(3deg);
+}
+
+.producto-icono-secundario {
+    position: static;
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    background: #eff6ff;
+    font-size: 1.65rem;
+}
+
+.visual-producto-secundario div {
+    display: grid;
+    gap: 2px;
+}
+
+.visual-producto-secundario strong {
+    color: #1e293b;
+    font-size: 0.78rem;
+}
+
+.visual-producto-secundario div span {
+    color: #64748b;
+    font-size: 0.7rem;
+}
+
+.visual-sello {
+    position: absolute;
+    bottom: 28px;
+    left: 5%;
+    display: grid;
+    width: 70px;
+    height: 70px;
+    place-content: center;
+    border: 1px dashed #93c5fd;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    text-align: center;
+    transform: rotate(-12deg);
+}
+
+.visual-sello span {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.visual-sello strong {
+    font-size: 0.48rem;
+    letter-spacing: 0.1em;
+}
+
+.portada-curva {
+    position: absolute;
+    right: -5%;
+    bottom: -76px;
+    left: -5%;
+    height: 110px;
+    border-radius: 50% 50% 0 0;
+    background: #fff;
+}
+
+.seccion-nosotros {
+    padding: 58px 0 68px;
+    background: #fff;
+}
+
+.nosotros-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.nosotros-intro h2,
+.seccion-titulo h2 {
+    margin-top: 10px;
+    color: #0f172a;
+    font-size: clamp(1.7rem, 3vw, 2.45rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
+
+.nosotros-detalle > p {
+    color: #64748b;
+    font-size: 0.98rem;
+}
+
+.beneficios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 23px;
+}
+
+.beneficio {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.beneficio > span {
+    display: grid;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.beneficio div {
+    display: grid;
+}
+
+.beneficio strong {
+    color: #1e293b;
+    font-size: 0.81rem;
+}
+
+.beneficio small {
+    color: #64748b;
+    font-size: 0.74rem;
+}
+
+.seccion-productos,
+.seccion-administracion {
+    padding: 72px 0;
+}
+
+.seccion-productos {
+    background: #f8fafc;
+}
+
+.seccion-administracion {
+    background: #eff4fb;
+}
+
+.seccion-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 25px;
+}
+
+.seccion-titulo > p {
+    max-width: 340px;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.tarjeta-catalogo {
+    padding: 24px;
+}
+
+.lista-catalogo {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+.lista-catalogo .producto {
+    min-height: 160px;
+    padding: 20px;
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lista-catalogo .producto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.07);
+}
+
+.catalogo-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 18px;
+    color: #64748b;
+    font-size: 0.87rem;
+}
+
+.catalogo-pie a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #2563eb;
+}
+
+.panel-tienda {
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+}
+
+.tarjeta-gestion {
+    min-width: 0;
+}
+
+.texto-gestion {
+    margin: -10px 0 17px;
+    color: #64748b;
+    font-size: 0.87rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.footer {
+    padding: 24px 0;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo-footer {
+    color: #fff;
+}
+
+.footer-contenido p {
+    margin: 0;
+}
+
+.footer-contacto {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .panel-tienda {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-contenido {
+        height: auto;
+        min-height: 65px;
+        flex-wrap: wrap;
+        gap: 5px 16px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 5px 14px;
+    }
+
+    .nav-links a {
+        font-size: 0.82rem;
+    }
+
+    .portada-contenido {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .portada-visual {
+        min-height: 365px;
+    }
+
+    .nosotros-contenido {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .seccion-titulo {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .seccion-productos,
+    .seccion-administracion {
+        padding: 54px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .nav-contenido {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 4px 11px;
+    }
+
+    .portada-texto h1 {
+        font-size: 2.45rem;
+    }
+
+    .portada-acciones {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .portada-visual {
+        min-height: 330px;
+        margin: 0 -12px;
+    }
+
+    .visual-producto-principal {
+        min-height: 280px;
+    }
+
+    .visual-producto-secundario {
+        right: 0;
+        bottom: 18px;
+        padding: 10px 12px;
+    }
+
+    .visual-sello {
+        bottom: 15px;
+    }
+
+    .beneficios {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-catalogo {
+        padding: 16px;
+    }
+
+    .catalogo-pie {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        text-align: center;
     }
 }

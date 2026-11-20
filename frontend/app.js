@@ -2,6 +2,7 @@ const API_URL = "https://proyecto-bd2-8y1j.onrender.com";
 
 // ELEMENTOS DEL DOM
 const listaProductos = document.getElementById("listaProductos");
+const listaCatalogo = document.getElementById("listaCatalogo");
 const formulario = document.getElementById("formularioProducto");
 const productoId = document.getElementById("productoId");
 const nombreInput = document.getElementById("nombre");
@@ -37,9 +38,11 @@ async function cargarProductos() {
 
         const productos = await respuesta.json();
         listaProductos.innerHTML = "";
+        if (listaCatalogo) listaCatalogo.innerHTML = "";
 
         if (productos.length === 0) {
-            listaProductos.innerHTML = "<p style='color: #64748b;'>No hay productos disponibles</p>";
+            listaProductos.textContent = "No hay productos registrados.";
+            if (listaCatalogo) listaCatalogo.textContent = "Pronto encontrarás aquí nuestros productos.";
             return;
         }
 
@@ -77,10 +80,19 @@ async function cargarProductos() {
             acciones.append(btnEditar, btnEliminar);
             elemento.append(detalles, acciones);
             listaProductos.appendChild(elemento);
+
+            if (listaCatalogo) {
+                const tarjetaCatalogo = elemento.cloneNode(true);
+                tarjetaCatalogo.querySelector(".acciones").remove();
+                listaCatalogo.appendChild(tarjetaCatalogo);
+            }
         });
     } catch (error) {
         console.error("Error al cargar productos:", error);
         listaProductos.textContent = `No se pudieron cargar los productos: ${error.message}`;
+        if (listaCatalogo) {
+            listaCatalogo.textContent = "No se pudo cargar el catálogo. Inténtalo de nuevo más tarde.";
+        }
     }
 }
 
