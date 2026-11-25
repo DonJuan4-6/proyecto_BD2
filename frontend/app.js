@@ -1,4 +1,9 @@
-const API_URL = "https://proyecto-bd2-8y1j.onrender.com";
+const API_URL = 
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.protocol === "file:"
+        ? "http://localhost:3000"
+        : "https://proyecto-bd2-8y1j.onrender.com";
 
 // ELEMENTOS DEL DOM
 const listaProductos = document.getElementById("listaProductos");
@@ -28,7 +33,7 @@ const estadoContactos = document.getElementById("estadoContactos");
 
 // 1. Funcion para consultar los productos y mostrarlos en el DOM (READ)
 async function cargarProductos() {
-    if (!listaProductos) return;
+    if (!listaProductos && !listaCatalogo) return;
 
     try {
         const respuesta = await fetch(`${API_URL}/productos`);
@@ -37,11 +42,11 @@ async function cargarProductos() {
         }
 
         const productos = await respuesta.json();
-        listaProductos.innerHTML = "";
+        if (listaProductos) listaProductos.innerHTML = "";
         if (listaCatalogo) listaCatalogo.innerHTML = "";
 
         if (productos.length === 0) {
-            listaProductos.textContent = "No hay productos registrados.";
+            if (listaProductos) listaProductos.textContent = "No hay productos registrados.";
             if (listaCatalogo) listaCatalogo.textContent = "Pronto encontrarás aquí nuestros productos.";
             return;
         }
@@ -61,35 +66,42 @@ async function cargarProductos() {
             const stock = document.createElement("p");
             stock.textContent = `Stock: ${producto.stock} unidades`;
 
-            const acciones = document.createElement("div");
-            acciones.classList.add("acciones");
-
-            const btnEditar = document.createElement("button");
-            btnEditar.classList.add("btn-editar");
-            btnEditar.textContent = "Editar";
-            btnEditar.addEventListener("click", () => {
-                cargarEnFormulario(producto.id, producto.nombre, producto.precio, producto.stock);
-            });
-
-            const btnEliminar = document.createElement("button");
-            btnEliminar.classList.add("btn-eliminar");
-            btnEliminar.textContent = "Eliminar";
-            btnEliminar.addEventListener("click", () => eliminarProducto(producto.id));
-
             detalles.append(nombre, precio, stock);
-            acciones.append(btnEditar, btnEliminar);
-            elemento.append(detalles, acciones);
-            listaProductos.appendChild(elemento);
+            elemento.appendChild(detalles);
+
+            if (listaProductos) {
+                const acciones = document.createElement("div");
+                acciones.classList.add("acciones");
+
+                const btnEditar = document.createElement("button");
+                btnEditar.classList.add("btn-editar");
+                btnEditar.textContent = "Editar";
+                btnEditar.addEventListener("click", () => {
+                    cargarEnFormulario(producto.id, producto.nombre, producto.precio, producto.stock);
+                });
+
+                const btnEliminar = document.createElement("button");
+                btnEliminar.classList.add("btn-eliminar");
+                btnEliminar.textContent = "Eliminar";
+                btnEliminar.addEventListener("click", () => eliminarProducto(producto.id));
+
+                acciones.append(btnEditar, btnEliminar);
+                elemento.appendChild(acciones);
+                listaProductos.appendChild(elemento);
+            }
 
             if (listaCatalogo) {
                 const tarjetaCatalogo = elemento.cloneNode(true);
-                tarjetaCatalogo.querySelector(".acciones").remove();
+                const accionesCatalogo = tarjetaCatalogo.querySelector(".acciones");
+                if (accionesCatalogo) accionesCatalogo.remove();
                 listaCatalogo.appendChild(tarjetaCatalogo);
             }
         });
     } catch (error) {
         console.error("Error al cargar productos:", error);
-        listaProductos.textContent = `No se pudieron cargar los productos: ${error.message}`;
+        if (listaProductos) {
+            listaProductos.textContent = `No se pudieron cargar los productos: ${error.message}`;
+        }
         if (listaCatalogo) {
             listaCatalogo.textContent = "No se pudo cargar el catálogo. Inténtalo de nuevo más tarde.";
         }
