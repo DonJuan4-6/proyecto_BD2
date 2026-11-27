@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1f5f9">
+    <meta name="description" content="Lee las reseñas de Mi Tienda.">
+    <title>Reseñas | Mi Tienda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="contenedor nav-contenido">
+            <a href="index.html" class="logo" aria-label="Mi Tienda, inicio">Mi<strong>Tienda</strong></a>
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="index.html#nosotros">Nosotros</a>
+                <a href="productos.html">Productos</a>
+                <a href="resenas.html" aria-current="page">Reseñas</a>
+                <a href="productos.html#administracion">Administración</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion-productos" id="resenas">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <div><span class="sobrelinea">RESEÑAS</span><h2>Opiniones de nuestros clientes</h2></div>
+                    <p>En esta sección podrás agregar las reseñas de Mi Tienda.</p>
+                </div>
+                <div id="listaResenas" class="lista-productos lista-catalogo">
+                    <!-- Aquí se agregarán las reseñas. -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor footer-contenido">
+            <a href="index.html" class="logo logo-footer">Mi<strong>Tienda</strong></a>
+            <p>&copy; 2026 Mi Tienda. Un espacio creado para ti.</p>
+            <a class="footer-contacto" href="contacto.html">Hablemos <span aria-hidden="true">→</span></a>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
