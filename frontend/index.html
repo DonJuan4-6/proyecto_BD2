@@ -16,8 +16,9 @@
             <nav class="nav-links" aria-label="Navegación principal">
                 <a href="#inicio" aria-current="page">Inicio</a>
                 <a href="#nosotros">Nosotros</a>
-                <a href="#productos">Productos</a>
-                <a href="#administracion">Administración</a>
+                <a href="productos.html">Productos</a>
+                <a href="resenas.html">Reseñas</a>
+                <a href="productos.html#administracion">Administración</a>
                 <a href="contacto.html">Contacto</a>
             </nav>
         </div>
@@ -31,7 +32,7 @@
                     <h1>Encuentra tus favoritos.<br><span>Disfruta cada día.</span></h1>
                     <p>En Mi Tienda hacemos fácil descubrir buenos productos y tener todo lo que te gusta siempre a la mano.</p>
                     <div class="portada-acciones">
-                        <a class="btn btn-portada" href="#productos">Explorar productos <span aria-hidden="true">→</span></a>
+                        <a class="btn btn-portada" href="productos.html">Explorar productos <span aria-hidden="true">→</span></a>
                         <a class="enlace-secundario" href="#nosotros">Conoce nuestra tienda</a>
                     </div>
                     <div class="portada-confianza">
@@ -74,69 +75,6 @@
             </div>
         </section>
 
-        <section class="seccion-productos" id="productos">
-            <div class="contenedor">
-                <div class="seccion-titulo">
-                    <div><span class="sobrelinea">NUESTRO CATÁLOGO</span><h2>Un vistazo a la tienda</h2></div>
-                    <p>Conoce los productos disponibles y encuentra tu próximo favorito.</p>
-                </div>
-                <section class="tarjeta tarjeta-catalogo" aria-labelledby="tituloCatalogo">
-                    <h2 class="sr-only" id="tituloCatalogo">Productos disponibles</h2>
-                    <div id="listaCatalogo" class="lista-productos lista-catalogo">
-                        <!-- Los productos se cargan desde app.js -->
-                    </div>
-                </section>
-                <div class="catalogo-pie">
-                    <span>¿Buscas algo en particular?</span>
-                    <a href="contacto.html">Conversemos <span aria-hidden="true">→</span></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion-administracion" id="administracion">
-            <div class="contenedor">
-                <div class="seccion-titulo">
-                    <div><span class="sobrelinea">PANEL DE CONTROL</span><h2>Administración de productos</h2></div>
-                    <p>Gestiona fácilmente el inventario de Mi Tienda.</p>
-                </div>
-                <div class="panel-tienda">
-                    <section class="tarjeta">
-                        <h2 id="tituloFormulario">Registrar producto</h2>
-
-                        <form id="formularioProducto" action="">
-                            <input type="hidden" id="productoId" value=""/>
-
-                            <div class="campo">
-                                <label for="nombre">Nombre del producto:</label>
-                                <input type="text" id="nombre" placeholder="Ej: Camiseta" required/>
-                            </div>
-
-                            <div class="campo">
-                                <label for="precio">Precio:</label>
-                                <input type="number" id="precio" step="0.1" min="0" placeholder="Ej: 250000" required/>
-                            </div>
-
-                            <div class="campo">
-                                <label for="stock">Stock (cantidad)</label>
-                                <input type="number" id="stock" step="1" min="0" placeholder="Ej: 10" required/>
-                            </div>
-
-                            <div class="acciones-form">
-                                <button type="submit" id="btnGuardar" class="btn btn-guardar">Guardar Producto</button>
-                                <button type="button" id="btnCancelar" class="btn btn-cancelar">Cancelar</button>
-                            </div>
-                        </form>
-                    </section>
-
-                    <section class="tarjeta tarjeta-gestion">
-                        <h2>Lista para gestionar</h2>
-                        <p class="texto-gestion">Edita o elimina los productos registrados en tu inventario.</p>
-                    <div id="listaProductos" class="lista-productos">
-                    </div>
-                    </section>
-                </div>
-            </div>
-        </section>
     </main>
     <footer class="footer">
         <div class="contenedor footer-contenido">
