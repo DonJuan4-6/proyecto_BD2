@@ -27,14 +27,26 @@ if (host !== "localhost" && host !== "127.0.0.1"){
 }
 
 
-// Crear la conexion con MySQL o TiDB Cloud
-const conexion = mysql.createConnection(configuracion)
+// Crear un pool de conexiones (recomendado para producción:
+// reconecta solo si TiDB Cloud cierra conexiones inactivas)
+const conexion = mysql.createPool({
+    ...configuracion,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 10000,
+});
 
 
 // Comprobamos si la conexion fue exitosa
-conexion.connect((error) => {
+conexion.query("SELECT 1", (error) => {
     if (error){
-        console.error("Error al conectar con la base de datos: ",error.message);
+        console.error(
+            `Error al conectar con la base de datos (${host}:${port}):`,
+            error.code,
+            error.message
+        );
         return;
     }
     console.log(`Conexión exitosa con la base de datos (${host}:${port})`);

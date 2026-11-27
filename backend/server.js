@@ -11,20 +11,27 @@ app.use(cors()); // Permite recibir peticiones desde el frontend
 //Aplicamos el limite a 10MB para el envio de imagenes en Base64 hacia cloudinary
 app.use(express.json({limit: "10mb"})); // Habilitar la lectra de datos en formato JSON
 
-//verificar al iniciar que la tabla de productos 'productos' MySQL tenga la columna imagen_url
-
+// Verificar al iniciar que la tabla 'productos' tenga la columna imagen_url
 conexion.query("SHOW COLUMNS FROM productos LIKE 'imagen_url'",
     (err, resultados) => {
-        if (!err & Array.isArray(resultados) && resultados.length === 0){
-            conexion.query(
-                "ALTER TABLE productos ADD COLUMN imagen_url VARCHAR(500) DEFAULT NULL",
-                (errAlter)=>{
-                    if (!errAlter){
-                        console.log("Columna 'imagen_url' verificada/agregada en la tabla 'productos'");
-                    }
-                }
-            );
+        if (err) {
+            console.error("Error al verificar la columna 'imagen_url':", err.code, err.message);
+            return;
         }
+        if (!Array.isArray(resultados) || resultados.length > 0) {
+            console.log("Columna 'imagen_url' verificada en la tabla 'productos'");
+            return;
+        }
+        conexion.query(
+            "ALTER TABLE productos ADD COLUMN imagen_url VARCHAR(500) DEFAULT NULL",
+            (errAlter) => {
+                if (errAlter) {
+                    console.error("Error al agregar la columna 'imagen_url':", errAlter.code, errAlter.message);
+                    return;
+                }
+                console.log("Columna 'imagen_url' agregada a la tabla 'productos'");
+            }
+        );
     }
 );
 
@@ -32,6 +39,20 @@ conexion.query("SHOW COLUMNS FROM productos LIKE 'imagen_url'",
 // Ruta de prueba
 app.get("/", (req, res) => {
     res.send("Servidor funcionando correctamente")
+});
+
+// Diagnóstico: estado de la conexión con la base de datos
+app.get("/health", (req, res) => {
+    conexion.query("SELECT 1 AS ok", (error) => {
+        if (error) {
+            return res.status(503).json({
+                db: "error",
+                code: error.code,
+                mensaje: error.message
+            });
+        }
+        res.json({ db: "ok" });
+    });
 });
 
 // 1. Obtener todos los productos (READ)
